@@ -25,7 +25,17 @@ document.addEventListener("keydown", function (event){
             break;
         default:
     }
+    playAnimation(event.key);
     audio.play();
 });
 
-
+function playAnimation(key){
+    console.log(key+" drum");
+    var button = document.querySelector("."+key);
+    if (button){
+        button.classList.add("pressed");
+        setTimeout(function(){
+            button.classList.remove("pressed");
+        }, 100);
+    }
+}
