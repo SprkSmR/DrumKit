@@ -1,7 +1,18 @@
 var audio = new Audio();
+document.querySelectorAll("button").forEach(button => {
+    button.addEventListener("click", function (event){
+        console.log(event);
+        switchSound(event.target.classList[0]);
+    });
+});
+
 
 document.addEventListener("keydown", function (event){
-    switch(event.key){
+    switchSound(event.key);
+});
+
+function switchSound(key){
+    switch(key){
         case "w":
             audio.src = "./sounds/tom-1.mp3";
             break;
@@ -25,9 +36,9 @@ document.addEventListener("keydown", function (event){
             break;
         default:
     }
-    playAnimation(event.key);
+    playAnimation(key);
     audio.play();
-});
+}
 
 function playAnimation(key){
     console.log(key+" drum");
